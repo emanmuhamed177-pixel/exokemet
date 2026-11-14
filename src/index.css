@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; font-family: Inter, system-ui, sans-serif; }
+html { scroll-behavior: smooth; background: #120e0c; }
+body { @apply bg-[#120e0c] text-slate-100 antialiased; margin: 0; min-width: 320px; background-image: radial-gradient(circle at 12% 5%, rgba(177, 96, 45, .16), transparent 28rem), radial-gradient(circle at 90% 18%, rgba(148, 72, 62, .12), transparent 30rem); }
+button, a, input { font: inherit; }
+button { cursor: pointer; }
+::selection { background: rgba(251, 146, 60, .24); color: #f8fafc; }
+.leaflet-container { background: #20150f; font-family: Inter, system-ui, sans-serif; }
+.earth-map { background: radial-gradient(circle at 50% 40%, #2d231e 0%, #120e0c 72%); }
+.earth-map .leaflet-tile { filter: saturate(1.08) contrast(1.04); }
+.earth-map .leaflet-control-layers { border: 1px solid rgba(251, 191, 36, .2) !important; box-shadow: 0 12px 28px rgba(0,0,0,.35); }
+.earth-map .leaflet-control-layers-toggle { background-color: #2a1c15 !important; }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: #2a1c15; color: #dbeafe; border: 1px solid rgba(148, 163, 184, .15); box-shadow: 0 18px 38px rgba(0,0,0,.32); }
+.leaflet-popup-content { margin: 13px 14px; }
+.leaflet-control-layers, .leaflet-bar a { background: #2a1c15 !important; color: #cbd5e1 !important; border-color: rgba(148,163,184,.18) !important; }
+.leaflet-bar a:hover { background: #13243a !important; color: #67e8f9 !important; }
+.leaflet-control-attribution { background: rgba(6, 11, 21, .8) !important; color: #64748b !important; }
+.leaflet-control-attribution a { color: #94a3b8 !important; }
+.exo-icon { background: transparent; border: none; }
+.exo-pin { width: 22px; height: 22px; margin: 3px; background: var(--c); border: 2px solid rgba(240,249,255,.92); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 18%, transparent), 0 0 20px var(--c); transition: transform .2s ease, box-shadow .2s ease; }
+.exo-circle { border-radius: 50%; }
+.exo-diamond { transform: rotate(45deg); border-radius: 3px; }
+.exo-triangle { clip-path: polygon(50% 0, 100% 100%, 0 100%); border: none; }
+.exo-circle.exo-selected, .exo-triangle.exo-selected { transform: scale(1.38); }
+.exo-diamond.exo-selected { transform: rotate(45deg) scale(1.38); }
+@layer components {
+  .nav-link { @apply rounded-lg px-3 py-2 text-xs text-slate-400 transition hover:bg-white/[0.05] hover:text-amber-200; }
+  .nav-cta { @apply ml-3 rounded-lg border border-amber-300/25 bg-amber-300/10 px-3.5 py-2 text-xs font-semibold text-amber-100 transition hover:border-amber-200/60 hover:bg-amber-300/15; }
+  .brand-orbit { @apply flex h-9 w-9 items-center justify-center rounded-full border border-amber-200/40 bg-amber-300/10; box-shadow: 0 0 0 5px rgba(251,146,60,.04); }
+  .hero-shell { @apply relative overflow-hidden border-b border-white/[0.08]; background: linear-gradient(135deg, rgba(9, 25, 43, .94), rgba(6, 11, 21, .96) 58%, rgba(22, 14, 40, .9)); }
+  .hero-grid { @apply pointer-events-none absolute inset-0 opacity-30; background-image: linear-gradient(rgba(125,211,252,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(125,211,252,.08) 1px, transparent 1px); background-size: 76px 76px; mask-image: linear-gradient(to bottom, black, transparent 85%); }
+  .eyebrow { @apply flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-200; }
+  .eyebrow-line { @apply h-px w-8 bg-amber-300/60; }
+  .hero-title { @apply max-w-3xl font-display text-5xl font-bold leading-[1.02] tracking-[-0.035em] text-white sm:text-7xl; }
+  .hero-accent { @apply text-amber-200; text-shadow: 0 0 32px rgba(251,191,36,.25); }
+  .hero-copy { @apply max-w-2xl text-base leading-7 text-slate-300 sm:text-lg; }
+  .primary-button { @apply inline-flex items-center justify-center gap-2 rounded-lg bg-amber-200 px-4 py-3 text-sm font-semibold text-[#2a1308] transition hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-200/60; }
+  .secondary-button { @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 px-4 py-3 text-sm text-slate-200 transition hover:border-amber-200/50 hover:bg-white/[0.04] hover:text-amber-100; }
+  .metric-number { @apply font-display text-2xl font-semibold text-white; }
+  .metric-label { @apply mt-1 text-[10px] uppercase tracking-[0.16em] text-slate-500; }
+  .orbit-panel { @apply relative overflow-hidden rounded-2xl border border-amber-100/15 bg-[#241711]/75 p-4 shadow-2xl shadow-amber-950/30 backdrop-blur; }
+  .orbit-panel-top, .orbit-panel-bottom { @apply flex items-center justify-between gap-4 text-[10px] uppercase tracking-[0.12em] text-slate-400; }
+  .orbit-panel-bottom { @apply border-t border-white/[0.08] pt-4 normal-case tracking-normal; }
+  .planet-stage { @apply relative my-5 h-[390px] overflow-hidden rounded-xl border border-white/[0.07] bg-[radial-gradient(circle_at_center,rgba(13,55,78,.55),rgba(6,14,26,.8)_60%,rgba(6,11,21,1))]; }
+  .planet-glow { @apply absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-300/10 blur-3xl; }
+  .planet-orbit-path { @apply absolute left-1/2 top-1/2 z-10; transform: translate(-50%, -50%); animation: planetary-orbit 40s linear infinite; will-change: transform; }
+  .planet-orbit-path-earth { @apply h-[40%] w-[55%]; animation-duration: 54s; animation-delay: -9s; }
+  .planet-orbit-path-moon { @apply h-[54%] w-[72%]; animation-duration: 23s; animation-delay: -5s; animation-direction: reverse; }
+  .planet-orbit-path-mars { @apply h-[78%] w-[94%]; animation-duration: 38s; animation-delay: -19s; }
+  .planet-earth, .planet-moon, .planet-mars { @apply absolute left-full top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full; }
+  .planet-earth { @apply h-36 w-36 border border-amber-100/20 bg-[radial-gradient(circle_at_32%_30%,#a86f43,#5f3626_55%,#1a0f0b_100%)]; box-shadow: inset -18px -12px 30px rgba(1,8,16,.7), 0 0 50px rgba(251,146,60,.23); }
+  .planet-moon { @apply h-16 w-16 border border-white/15 bg-[radial-gradient(circle_at_30%_30%,#cbd5e1,#475569_70%,#172033)]; box-shadow: 0 0 26px rgba(203,213,225,.18); }
+  .planet-mars { @apply h-20 w-20 border border-white/15 bg-[radial-gradient(circle_at_30%_30%,#ef9b72,#8d3b2d_65%,#251219)]; box-shadow: 0 0 26px rgba(244,114,75,.18); }
+  .planet-earth img, .planet-moon img, .planet-mars img { @apply block h-full w-full rounded-full object-cover; }
+  .orbit-scale-note { @apply absolute bottom-2 right-3 z-20 rounded-md border border-white/10 bg-[#17100d]/85 px-2 py-1 text-[8px] uppercase tracking-[0.12em] text-slate-400; }
+  @keyframes planetary-orbit { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    .planet-orbit-path { animation: none; will-change: auto; }
+    .planet-orbit-path-earth { transform: translate(-50%, -50%) rotate(-110deg); }
+    .planet-orbit-path-moon { transform: translate(-50%, -50%) rotate(165deg); }
+    .planet-orbit-path-mars { transform: translate(-50%, -50%) rotate(65deg); }
+  }
+  .orbit-ring { @apply absolute left-1/2 top-1/2 rounded-full border border-amber-100/15; transform: translate(-50%, -50%) rotate(-22deg); }
+  .orbit-ring-one { @apply h-64 w-[460px]; }
+  .orbit-ring-two { @apply h-[330px] w-[560px] border-dashed opacity-60; transform: translate(-50%, -50%) rotate(35deg); }
+  .orbit-sweep { @apply absolute left-[18%] top-[31%] h-1 w-1 rounded-full bg-amber-100; box-shadow: 0 0 0 4px rgba(251,191,36,.15), 210px 140px 0 -1px rgba(251,191,36,.8), 310px -62px 0 -1px rgba(251,191,36,.45); }
+  .orbit-center { @apply absolute left-1/2 top-1/2 z-20 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-amber-200/25 bg-amber-200/10; }
+  .orbit-label { @apply absolute z-20 rounded-md border border-white/10 bg-[#17100d]/85 px-2 py-1 text-[10px] text-slate-300 backdrop-blur; }
+  .label-earth { @apply left-[10%] top-[18%]; } .label-moon { @apply right-[5%] top-[10%]; } .label-mars { @apply bottom-[10%] left-[5%]; }
+  .label-dot { @apply mr-1.5 inline-block h-1.5 w-1.5 rounded-full; }
+  .floating-callout { @apply absolute -bottom-4 -left-3 flex items-start gap-2 rounded-xl border border-amber-200/20 bg-[#2b1b12] px-3 py-2.5 text-[11px] leading-5 text-slate-400 shadow-xl sm:-left-8; }
+  .section-kicker { @apply flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-200; }
+  .section-number { @apply font-mono text-slate-500; }
+  .section-title { @apply max-w-3xl font-display text-3xl font-semibold tracking-[-0.02em] text-white sm:text-4xl; }
+  .section-copy { @apply mt-3 max-w-3xl text-sm leading-6 text-slate-400; }
+  .live-dot { @apply inline-block h-1.5 w-1.5 rounded-full bg-amber-300 shadow-[0_0_10px_rgba(251,191,36,.9)]; }
+  .filter-pill { @apply inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.025] px-3 py-2 text-xs text-slate-400 transition hover:border-amber-200/30 hover:text-slate-200; }
+  .filter-pill-active { @apply border-amber-200/50 bg-amber-300/10 text-amber-100; }
+  .filter-detail { @apply hidden text-[10px] text-slate-500 sm:inline; }
+  .map-frame { @apply overflow-hidden rounded-2xl border border-white/[0.09] bg-[#20150f] shadow-2xl shadow-black/20; }
+  .legend-dot { @apply inline-block h-2.5 w-2.5 rounded-full; } .legend-amber { @apply bg-amber-300 shadow-[0_0_10px_rgba(251,191,36,.8)]; } .legend-gold { @apply bg-amber-300 shadow-[0_0_10px_rgba(252,211,77,.8)]; }
+  .status-badge { @apply inline-flex w-fit items-center gap-2 rounded-full border border-amber-200/20 bg-amber-200/5 px-3 py-1.5 text-xs text-amber-100; }
+  .discovery-card { @apply cursor-pointer rounded-2xl border border-white/[0.09] bg-white/[0.025] p-5 transition duration-300 hover:-translate-y-1 hover:border-amber-200/30 hover:bg-amber-200/[0.045] focus:outline-none focus:ring-2 focus:ring-amber-200/50; }
+  .rank-mark { @apply font-mono text-2xl text-slate-600; } .preliminary-label { @apply rounded-full border border-white/10 px-2 py-1 text-[9px] uppercase tracking-[0.16em] text-slate-500; }
+  .site-mark { @apply h-3 w-3 rounded-full shadow-[0_0_12px_currentColor]; } .empty-state { @apply rounded-xl border border-dashed border-white/15 p-6 text-center text-sm text-slate-400; }
+  .method-card { @apply rounded-2xl border border-white/[0.09] bg-white/[0.025] p-5; } .method-callout { @apply flex gap-3 rounded-xl border border-amber-200/15 bg-amber-200/[0.05] p-4 text-sm leading-6 text-slate-400; }
+  .status-key { @apply mr-2 inline-block h-2 w-2 rounded-full; } .status-real { @apply bg-amber-300; } .status-review { @apply bg-amber-300; } .status-unavailable { @apply bg-slate-600; }
+  .closing-note { @apply flex gap-4 rounded-2xl border border-amber-200/15 bg-gradient-to-r from-amber-300/[0.07] to-rose-300/[0.04] p-5 sm:p-6; }
+}
+@media (max-width: 640px) { .planet-stage { height: 330px; } .orbit-ring-one { width: 370px; } .orbit-ring-two { width: 450px; } .orbit-label { font-size: 9px; } .label-earth { left: 4%; } .label-moon { right: 3%; } }
+
+.hero-site-backdrop { background-position: center; background-size: cover; background-repeat: no-repeat; transition: background-image .35s ease; }
