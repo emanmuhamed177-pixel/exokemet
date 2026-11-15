@@ -53,4 +53,6 @@ Site-specific sources are linked in the table and registry: [White Desert karst 
 - Mars globe: [NASA — Mars Planet Globe](https://science.nasa.gov/resource/mars-planet-globe/), Valles Marineris mosaic assembled from 102 Viking Orbiter images; credit NASA/JPL-Caltech.
 - Map: [Esri World Imagery and World Topographic Map](https://www.arcgis.com/home/item.html?id=10df2279f9e4db1cbf3f6a8e2c9f6d3b) via Leaflet, with required Esri/Maxar/Earthstar attribution. The default layer is satellite Earth imagery and a topographic Earth layer is available from the map controls.
 
-All current candidate coordinates remain approximate or pending verification, and the app does not present invented measurements or similarity scores.
+All current candidate coordinates remain approximate or pending verification, and the app does not present invented measurements or similarity scores. 
+<!-- إعادة نشر الموقع -->
+
