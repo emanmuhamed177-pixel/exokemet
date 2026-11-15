@@ -10,6 +10,15 @@ Open this folder in Visual Studio Code, open its integrated terminal, and run:
 npm ci
 npm run dev
 ```
+---
+
+### 🔗 Project Links & Documentation
+*[ **🌐 Live Platform:** Open Live Platform](https://emanmuhamed177-pixel.github.io/exokemet/)
+* **📊 Presentation (7 Slides):** [View Presentation](./EXOKEMET_Presentation.pdf)
+* **📄 Full Technical Report:** [View Report](./Report.pdf)
+
+### 💡 About the Project
+**EXOKEMET** is an interactive platform designed to address the *"Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars"* challenge. By analyzing geological, environmental, and topographical data, our solution identifies optimal terrestrial analog sites on Earth that closely mirror lunar and Martian conditions—helping researchers and space agencies test habitats, rovers, and survival technologies for future permanent space missions.
 
 Open `http://localhost:3000` in a browser. On Windows, the included `run-windows.bat` starts the same local development server and installs the locked dependencies if `node_modules` is missing. The project pins npm `10.9.9` in `package.json` and keeps the exact dependency graph in `package-lock.json`.
 
