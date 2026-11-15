@@ -14,7 +14,7 @@ npm run dev
 
 ### 🔗 Project Links & Documentation
 *[ **🌐 Live Platform:** Open Live Platform](https://emanmuhamed177-pixel.github.io/exokemet/)
-* **📊 Presentation (7 Slides):** [View Presentation](./EXOKEMET_Presentation.pdf)
+* **📊 Presentation (7 Slides):** [View Presentation](https://drive.google.com/file/d/1Q1F3hinDDTl8F0SCdaIlzM3DyyECAvfb/view?usp=sharing)
 * **📄 Full Technical Report:** [View Report](./Report.pdf)
 
 ### 💡 About the Project
